@@ -1,0 +1,236 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<style>
+/* General About Section */
+.about-section {
+    padding: 60px 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085, #a1c4fd, #c2e9fb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Animated Gradient Background */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero Section */
+.hero-about {
+    position: relative;
+    background: url('https://source.unsplash.com/1200x400/?office,team') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.hero-about::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+.hero-about h1, .hero-about p {
+    position: relative;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+}
+
+/* Cards */
+.about-card {
+    border: none;
+    border-radius: 20px;
+    padding: 30px 20px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #43cea2, #185a9d);
+    background-size: 400% 400%;
+    animation: cardGradient 8s ease infinite;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.about-card:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+@keyframes cardGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.about-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+/* About Content */
+.about-content img {
+    border-radius: 15px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+.about-content img:hover {
+    transform: scale(1.05);
+}
+
+/* Team Section */
+.team-member {
+    text-align: center;
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+}
+.team-member:hover {
+    transform: translateY(-10px);
+}
+.team-member img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ff7eb3;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.team-member img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+.team-member h5 {
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff758c, #ff7eb3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.team-member p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Section Titles */
+.section-title {
+    font-weight: 800;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    background: linear-gradient(90deg, #43cea2, #185a9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+    .hero-about {
+        height: 300px;
+    }
+}
+</style>
+
+<!-- Hero Section -->
+<div class="hero-about mb-5">
+    <div>
+        <h1>About Us</h1>
+        <p class="lead">Innovating, creating, and supporting businesses worldwide</p>
+    </div>
+</div>
+
+<div class="container about-section">
+
+    <!-- About Content -->
+    <div class="row align-items-center about-content mb-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <img src="https://source.unsplash.com/600x400/?office,workspace" alt="Our Mission">
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-3">Our Mission</h3>
+            <p>
+                We aim to provide high-quality solutions that help businesses grow and succeed.
+                Our team is dedicated to delivering reliable and innovative services.
+            </p>
+            <p>
+                With a passion for technology and creativity, we focus on building products
+                that make a real difference.
+            </p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card about-card">
+                <div class="about-icon">🚀</div>
+                <h5>Innovation</h5>
+                <p>We constantly explore new ideas and technologies.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card about-card">
+                <div class="about-icon">💡</div>
+                <h5>Creativity</h5>
+                <p>Creative solutions tailored to your needs.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card about-card">
+                <div class="about-icon">🤝</div>
+                <h5>Support</h5>
+                <p>We provide reliable and continuous support.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="text-center mb-5">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="text-muted">A team of passionate professionals driving innovation</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="team-member">
+                <img src="https://source.unsplash.com/200x200/?person,1" alt="Team Member">
+                <h5>Jane Doe</h5>
+                <p>CEO & Founder</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="team-member">
+                <img src="https://source.unsplash.com/200x200/?person,2" alt="Team Member">
+                <h5>John Smith</h5>
+                <p>Lead Developer</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="team-member">
+                <img src="https://source.unsplash.com/200x200/?person,3" alt="Team Member">
+                <h5>Mary Johnson</h5>
+                <p>Product Designer</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="team-member">
+                <img src="https://source.unsplash.com/200x200/?person,4" alt="Team Member">
+                <h5>James Lee</h5>
+                <p>Marketing Head</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

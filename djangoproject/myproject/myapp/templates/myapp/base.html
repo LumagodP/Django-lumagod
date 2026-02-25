@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background-color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: #aaa;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">django</div>
+
+        <div class="nav-links">
+            <a href="{% url 'homepage' %}" 
+               class="{% if request.path == '/' %}active{% endif %}">
+               Home
+            </a>
+
+            <a href="{% url 'about' %}" 
+               class="{% if request.path == '/about/' %}active{% endif %}">
+               About
+            </a>
+
+            <a href="{% url 'contact' %}" 
+               class="{% if request.path == '/contact/' %}active{% endif %}">
+               Contact
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        © 2026 TaskMaster | Built with Django 💚
+    </div>
+
+</body>
+</html>
